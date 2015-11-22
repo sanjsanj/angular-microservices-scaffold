@@ -6,7 +6,7 @@ app.controller('FirstController', [function() {
 }]);
 
 
-app.controller('SecondController', ['$scope', function($scope) {
+app.controller('SecondController', [function() {
   var vm = this;
   vm.heading = 'Second Controller'
 }]);
@@ -24,3 +24,10 @@ app.config(function($routeProvider, $locationProvider) {
     controllerAs: 'ctrl'
   });
 });
+
+app.directive('navbar', [function() {
+  return {
+    restrict: 'E',
+    templateUrl: 'navbar.html'
+  };
+}]);
