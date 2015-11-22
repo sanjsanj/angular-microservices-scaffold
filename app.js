@@ -1,5 +1,12 @@
 var app = angular.module('app', ['ngRoute']);
 
+app.controller('NavController', ['$location', function($location) {
+  var vm = this;
+  vm.isActive = function(viewLocation) {
+    return viewLocation === $location.path();
+  };
+}]);
+
 app.controller('FirstController', [function() {
   var vm = this;
   vm.heading = 'First Controller'
@@ -27,7 +34,8 @@ app.config(function($routeProvider, $locationProvider) {
 
 app.directive('navbar', [function() {
   return {
-    restrict: 'E',
-    templateUrl: 'navbar.html'
+    restrict: 'AECM',
+    templateUrl: 'navbar.html',
+    replace: true
   };
 }]);
